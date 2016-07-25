@@ -22,14 +22,14 @@ public class Visitor {
     @Column(name = "idNumber")
     private String idNumber;
     @Column(name = "arriveDate")
-    private Timestamp arriveDate;
+    private String arriveDate;
     @Column(name = "leaveDate")
-    private Timestamp leaveDate;
+    private String leaveDate;
 
     public Visitor() {
     }
 
-    public Visitor(String firstName, String lastName, String idNumber, Timestamp arriveDate, Timestamp leaveDate) {
+    public Visitor(String firstName, String lastName, String idNumber, String arriveDate, String leaveDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.idNumber = idNumber;
@@ -69,19 +69,19 @@ public class Visitor {
         this.idNumber = idNumber;
     }
 
-    public Timestamp getArriveDate() {
+    public String getArriveDate() {
         return arriveDate;
     }
 
-    public void setArriveDate(Timestamp arriveDate) {
+    public void setArriveDate(String arriveDate) {
         this.arriveDate = arriveDate;
     }
 
-    public Timestamp getLeaveDate() {
+    public String getLeaveDate() {
         return leaveDate;
     }
 
-    public void setLeaveDate(Timestamp leaveDate) {
+    public void setLeaveDate(String leaveDate) {
         this.leaveDate = leaveDate;
     }
 
