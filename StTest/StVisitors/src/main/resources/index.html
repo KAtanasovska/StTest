@@ -30,16 +30,16 @@
         {{visitor.firstName}}
     </td>
     <td>
-        <lable>{{visitor.lastName}}</lable>
+        <label>{{visitor.lastName}}</label>
     </td>
     <td>
-        <lable>{{visitor.idCard}}</lable>
+        <label>{{visitor.idCard}}</label>
     </td>
     <td>
-        <lable>{{visitor.arrive}}</lable>
+        <label>{{visitor.arriveDate}}</label>
     </td>
     <td>
-        <lable >{{visitor.leave}}</lable>
+        <label >{{visitor.leaveDate}}</label>
     </td>
     <td>
         <button id="btnEdit" class="btn" ng-click="open()">Измени</button>
@@ -58,7 +58,8 @@
                 <h2>Внесете нов посетител</h2>
             </div>
             <div class="modal-body">
-        <table>
+       <form novalidate>
+        <table >
             <tr class="form-group">
                 <td>Име</td>
                 <td>
@@ -90,6 +91,8 @@
                 </td>
             </tr>
         </table>
+       </form>
+
            </div>
             <div class="modal-footer">
                 <table >
@@ -102,8 +105,9 @@
                         </td>
                     </tr>
                 </table>
+
             </div>
-            </form>
+
         </div>
     </div>
 </div>

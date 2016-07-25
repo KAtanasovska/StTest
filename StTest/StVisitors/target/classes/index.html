@@ -13,6 +13,7 @@
 <body ng-app="MyApp" ng-controller="visitorsController" class="ng-scope">
 <img src="images/image001.gif"/>
 <img src="images/image002.png"/>
+<form form name="myform" novalidate>
 <button class="btn" ng-click="open()" >Нов посетител</button>
 <table class ="table" border = "1">
     <tr>
@@ -24,21 +25,21 @@
         <th>Време заминување</th>
         <th>Промена на податоци</th>
     </tr>
-    <tr ng-repeat="visitor in visitors">
+    <tr ng-repeat="visitor in visitors" >
     <td>
-        <lable>{{visitor.firstName}}</lable>
+        {{visitors}}
     </td>
     <td>
-        <lable>{{visitor.lastName}}</lable>
+        <label>{{visitor.lastName}}</label>
     </td>
     <td>
-        <lable>{{visitor.idCard}}</lable>
+        <label>{{visitor.idCard}}</label>
     </td>
     <td>
-        <lable>{{visitor.arrive}}</lable>
+        <label>{{visitor.arriveDate}}</label>
     </td>
     <td>
-        <lable >{{visitor.leave}}</lable>
+        <label >{{visitor.leaveDate}}</label>
     </td>
     <td>
         <button id="btnEdit" class="btn" ng-click="open()">Измени</button>
@@ -48,7 +49,7 @@
 
     </tr>
 </table>
-
+</form>
 <div modal="showModal" ng-show="showModal" close="cancel()">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -57,7 +58,8 @@
                 <h2>Внесете нов посетител</h2>
             </div>
             <div class="modal-body">
-        <table>
+       <form novalidate>
+        <table >
             <tr class="form-group">
                 <td>Име</td>
                 <td>
@@ -89,6 +91,8 @@
                 </td>
             </tr>
         </table>
+       </form>
+
            </div>
             <div class="modal-footer">
                 <table >
@@ -102,7 +106,7 @@
                     </tr>
                 </table>
             </div>
-            </form>
+
         </div>
     </div>
 </div>

@@ -12,6 +12,7 @@ angular
         };
 
         $scope.ok = function() {
+            serviceVisitors.addVisitor();
             $scope.showModal = false;
 
         };
@@ -29,7 +30,7 @@ angular
 
         $scope.ok1 = function() {
             serviceVisitors.deleteVisitor($scope.deleteVisitor).then(function(resp){
-                debugger;
+
                 $scope.showModal1 = false;
                 deleteVisitor=null;
                 $scope.downloadVisitors();
@@ -42,12 +43,12 @@ angular
             $scope.showModal1 = false;
 
         };
-        debugger;
+
         $scope.downloadVisitors = function(){
 
             serviceVisitors.getVisitors().then(function(resp){
-                debugger;
-               $scope.visitors=resp;
+
+               $scope.visitors=resp.data;
             });
 
 

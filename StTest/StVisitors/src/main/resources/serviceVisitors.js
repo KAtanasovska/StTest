@@ -14,6 +14,9 @@ angular.module('MyApp')
     },
        editVisitor: function(visitor){
         return $http.post("http://localhost:8080/Visitors", {"visitor": visitor})
-    }
+    },
+        addVisitor: function(visitor){
+            return $http.post("http://localhost:8080/Visitors", {"visitor": visitor})
+        }
    };
 });

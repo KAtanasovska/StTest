@@ -23,7 +23,7 @@ public class MainController {
     public List<Visitor> getVisitors() {
         return visitorDao.getVisitors();
     }
-
+    @CrossOrigin(origins = "http://localhost:63342")
     @RequestMapping(method = RequestMethod.POST)
     public Visitor addVisitor(@RequestBody Visitor visitor) throws SQLException {
         visitorDao.addVisitor(visitor);
