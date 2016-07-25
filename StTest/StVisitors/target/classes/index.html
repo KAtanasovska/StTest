@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+
+
+</head>
+<body ng-app="MyApp" ng-controller="visitorsController" class="ng-scope">
+<img src="images/image001.gif"/>
+<img src="images/image002.png"/>
+<button class="btn" ng-click="open()" >Нов посетител</button>
+<table class ="table" border = "1">
+    <tr>
+
+        <th>Име</th>
+        <th>Презиме</th>
+        <th>Бр. на лична карта</th>
+        <th>Време доаѓање</th>
+        <th>Време заминување</th>
+        <th>Промена на податоци</th>
+    </tr>
+    <tr ng-repeat="visitor in visitors">
+    <td>
+        <lable>{{visitor.firstName}}</lable>
+    </td>
+    <td>
+        <lable>{{visitor.lastName}}</lable>
+    </td>
+    <td>
+        <lable>{{visitor.idCard}}</lable>
+    </td>
+    <td>
+        <lable>{{visitor.arrive}}</lable>
+    </td>
+    <td>
+        <lable >{{visitor.leave}}</lable>
+    </td>
+    <td>
+        <button id="btnEdit" class="btn" ng-click="open()">Измени</button>
+        <button id="btnDelete" ng-click="open1(visitor.id)" >Избриши</button>
+    </td>
+
+
+    </tr>
+</table>
+
+<div modal="showModal" ng-show="showModal" close="cancel()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="newVisitorForm">
+            <div class="modal-header">
+                <h2>Внесете нов посетител</h2>
+            </div>
+            <div class="modal-body">
+        <table>
+            <tr class="form-group">
+                <td>Име</td>
+                <td>
+                <input type="text" name="firstName" class="form-control" ng-model="firstName" required/>
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td>Презиме</td>
+                <td>
+                    <input type="text" name="lastName" class="form-control" ng-model="lastName" required/>
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td>Број на лична карта</td>
+                <td>
+                    <input name="idCard" class="form-control" ng-pattern="/A[0-9][0-9][0-9][0-9][0-9][0-9]/" minlength="7" maxlength="7" ng-model="idCard" required />
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td>Време на доаѓање</td>
+                <td>
+                    <input type="text" name="arrive" class="form-control" ng-model="arrive" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Време на заминување</td>
+                <td>
+                    <input type="text"/>
+                </td>
+            </tr>
+        </table>
+           </div>
+            <div class="modal-footer">
+                <table >
+                    <tr>
+                        <td>
+                            <button class="btn btn-success" ng-click="ok()" ng-disabled="newVisitorForm.$invalid">Додади</button>
+                        </td>
+                        <td>
+                            <button class="btn" ng-click="cancel()">Назад</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div modal="showModal1" ng-show="showModal1" close="cancel()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="confirmDelete">
+                <div class="modal-header">
+                    <h2>Дали сте сигурни дека сакате да го избришете записот?</h2>
+                </div>
+
+                <div class="modal-footer">
+                    <table >
+                        <tr>
+                            <td>
+                                <button class="btn btn-success" ng-click="ok1()">Да</button>
+                            </td>
+                            <td>
+                                <button class="btn" ng-click="cancel1()">Не</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap.min.js"></script>
+<script src="app.js"></script>
+<script src="visitorsController.js"></script>
+<script src="serviceVisitors.js"></script>
+
+</html>
