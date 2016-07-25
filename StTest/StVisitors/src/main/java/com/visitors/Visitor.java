@@ -29,6 +29,15 @@ public class Visitor {
     public Visitor() {
     }
 
+    public Visitor(int id, String firstName, String lastName, String idNumber, String arriveDate, String leaveDate) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.idNumber = idNumber;
+        this.arriveDate = arriveDate;
+        this.leaveDate = leaveDate;
+    }
+
     public Visitor(String firstName, String lastName, String idNumber, String arriveDate, String leaveDate) {
         this.firstName = firstName;
         this.lastName = lastName;

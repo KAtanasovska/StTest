@@ -29,9 +29,20 @@ public class MainController {
       @RequestMapping(method = RequestMethod.POST)
 
       public Visitor addVisitors(@RequestBody String [] niza) throws SQLException {
-          Visitor visitor = new Visitor(niza[0],niza[1],niza[2],niza[3],niza[4]);
-          visitorDao.addVisitor(visitor);
-          return visitor;
+          System.out.println("ova e vrednosta na idto koga e prazno" + niza[5]);
+          if(niza[5]==null) {
+              Visitor visitor = new Visitor(niza[0], niza[1], niza[2], niza[3], niza[4]);
+              visitorDao.addVisitor(visitor);
+              return visitor;
+          }
+          else {
+              visitorDao.deleteVisitorById((int)Integer.parseInt(niza[5]));
+              Visitor visitor = new Visitor((int)Integer.parseInt(niza[5]), niza[0], niza[1], niza[2], niza[3], niza[4]);
+              visitorDao.addVisitor(visitor);
+              return visitor;
+          }
+
+
       }
 
 

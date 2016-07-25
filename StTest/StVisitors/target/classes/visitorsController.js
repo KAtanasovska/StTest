@@ -33,7 +33,7 @@ angular
         $scope.openEdit = function(visitor){
 
             $scope.showModal = true;
-            $scope.visitor.id = visitor.id;
+            $scope.visitor = visitor;
 
         }
         //delete button

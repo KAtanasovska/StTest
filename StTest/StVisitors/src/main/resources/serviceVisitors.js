@@ -10,19 +10,18 @@ angular.module('MyApp')
            return $http.get('http://localhost:8080/Visitors')
     },
        deleteVisitor: function(visitor){
+           var idto = visitor.id;
+        return $http.post("http://localhost:8080/Visitors", [idto])
+    },
 
-        return $http.post("http://localhost:8080/Visitors", {"visitor" :visitor})
-    },
-       editVisitor: function(visitor){
-        return $http.post("http://localhost:8080/Visitors/edit", {"firstName": visitor.firstName, "lastName": visitor.lasrName,"idNumber": visitor.idNumber, "arriveDate": visitor.arriveDate, "leaveDate": visitor.leaveDate })
-    },
         addVisitor: function(visitor){
+        var idto = visitor.id;
         var ime = visitor.firstName;
         var prezime = visitor.lastName;
         var licnaKarta = visitor.idNumber;
         var pristigna = visitor.arriveDate;
         var napushti = visitor.leaveDate;
-                return $http.post("http://localhost:8080/Visitors", [ime, prezime, licnaKarta, pristigna, napushti])
+                return $http.post("http://localhost:8080/Visitors", [ime, prezime, licnaKarta, pristigna, napushti, idto])
         }
    };
 });
