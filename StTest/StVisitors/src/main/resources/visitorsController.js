@@ -21,6 +21,7 @@ angular
                 'leaveDate': $scope.arriveDate});
                 */
             $scope.showModal = false;
+            $scope.downloadVisitors();
 
             };
 
@@ -39,15 +40,19 @@ angular
         //delete button
         $scope.open1 = function(visitor) {
 
-            $scope.theVisitor = visitor;
+
             $scope.showModal1 = true;
+            $scope.visitor = visitor;
 
         };
         //delete confirmation button clicked
-        $scope.ok1 = function() {
-            flag = true;
-
-            serviceVisitors.deleteVisitor(visitor).then(function(){
+        $scope.ok1 = function(visitor) {
+            visitor.firstName=null;
+            visitor.lastName=null;
+            visitor.idNumber=null;
+            visitor.arriveDate=null;
+            visitor.leaveDate=null;
+            serviceVisitors.addVisitor(visitor).then(function(){
 
                 $scope.showModal1 = false;
                 //deleteVisitor=null;
