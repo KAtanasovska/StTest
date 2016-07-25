@@ -13,4 +13,5 @@ public interface VisitorDao {
     public void editVisitor(Visitor visitor);
     public void deleteVisitor(Visitor visitor);
     public List<Visitor> getVisitors();
+    public void deleteVisitorById(int id);
 }

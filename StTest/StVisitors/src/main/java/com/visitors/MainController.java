@@ -23,12 +23,30 @@ public class MainController {
     public List<Visitor> getVisitors() {
         return visitorDao.getVisitors();
     }
+
+      @CrossOrigin(origins = "http://localhost:63342")
+
+      @RequestMapping(method = RequestMethod.POST)
+
+      public Visitor addVisitors(@RequestBody String [] niza) throws SQLException {
+          Visitor visitor = new Visitor(niza[0],niza[1],niza[2],niza[3],niza[4]);
+          visitorDao.addVisitor(visitor);
+          return visitor;
+      }
+
+
     @CrossOrigin(origins = "http://localhost:63342")
-    @RequestMapping(method = RequestMethod.POST)
-    public Visitor addVisitor(@RequestBody Visitor visitor) throws SQLException {
-        visitorDao.addVisitor(visitor);
+    @RequestMapping(value="/edit", method = RequestMethod.POST)
+    public Visitor updateVisitors(@RequestBody Visitor visitor) throws SQLException {
+        visitorDao.editVisitor(visitor);
         return visitor;
     }
 
+    @CrossOrigin(origins = "http://localhost:63342")
+    @RequestMapping(value="/delete", method = RequestMethod.POST)
+    public int deleteVisitors(@RequestBody int id) throws SQLException {
+        visitorDao.deleteVisitorById(id);
+        return id;
+    }
 
 }

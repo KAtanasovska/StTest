@@ -27,13 +27,13 @@
     </tr>
     <tr ng-repeat="visitor in visitors" >
     <td>
-        {{visitors}}
+        {{visitor.firstName}}
     </td>
     <td>
         <label>{{visitor.lastName}}</label>
     </td>
     <td>
-        <label>{{visitor.idCard}}</label>
+        <label>{{visitor.idNumber}}</label>
     </td>
     <td>
         <label>{{visitor.arriveDate}}</label>
@@ -42,7 +42,7 @@
         <label >{{visitor.leaveDate}}</label>
     </td>
     <td>
-        <button id="btnEdit" class="btn" ng-click="open()">Измени</button>
+        <button id="btnEdit" class="btn" ng-click="openEdit(visitor)">Измени</button>
         <button id="btnDelete" ng-click="open1(visitor.id)" >Избриши</button>
     </td>
 
@@ -63,31 +63,31 @@
             <tr class="form-group">
                 <td>Име</td>
                 <td>
-                <input type="text" name="firstName" class="form-control" ng-model="firstName" required/>
+                <input type="text" name="firstName" class="form-control" ng-model="visitor.firstName" required/>
                 </td>
             </tr>
             <tr class="form-group">
                 <td>Презиме</td>
                 <td>
-                    <input type="text" name="lastName" class="form-control" ng-model="lastName" required/>
+                    <input type="text" name="lastName" class="form-control" ng-model="visitor.lastName" required/>
                 </td>
             </tr>
             <tr class="form-group">
                 <td>Број на лична карта</td>
                 <td>
-                    <input name="idCard" class="form-control" ng-pattern="/A[0-9][0-9][0-9][0-9][0-9][0-9]/" minlength="7" maxlength="7" ng-model="idCard" required />
+                    <input name="idCard" class="form-control" ng-pattern="/A[0-9][0-9][0-9][0-9][0-9][0-9]/" minlength="7" maxlength="7" ng-model="visitor.idNumber" required />
                 </td>
             </tr>
             <tr class="form-group">
                 <td>Време на доаѓање</td>
                 <td>
-                    <input type="text" name="arrive" class="form-control" ng-model="arrive" required/>
+                    <input type="text" name="arriveDate" class="form-control" ng-model="visitor.arriveDate" required/>
                 </td>
             </tr>
             <tr>
                 <td>Време на заминување</td>
                 <td>
-                    <input type="text"/>
+                    <input type="text" name="leaveDate" class="form-control" ng-model="visitor.leaveDate"/>
                 </td>
             </tr>
         </table>
@@ -98,13 +98,14 @@
                 <table >
                     <tr>
                         <td>
-                            <button class="btn btn-success" ng-click="ok()" ng-disabled="newVisitorForm.$invalid">Додади</button>
+                            <input type="button" value="Додади" ng-click="ok(visitor)" ng-disabled="newVisitorForm.$invalid"></inputbutton>
                         </td>
                         <td>
                             <button class="btn" ng-click="cancel()">Назад</button>
                         </td>
                     </tr>
                 </table>
+
             </div>
 
         </div>
@@ -123,7 +124,7 @@
                     <table >
                         <tr>
                             <td>
-                                <button class="btn btn-success" ng-click="ok1()">Да</button>
+                                <button class="btn btn-success" ng-click="ok1(id)">Да</button>
                             </td>
                             <td>
                                 <button class="btn" ng-click="cancel1()">Не</button>

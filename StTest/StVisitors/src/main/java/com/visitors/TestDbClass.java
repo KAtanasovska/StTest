@@ -52,6 +52,7 @@ public class TestDbClass implements CommandLineRunner {
                        // System.out.println("the last name should be edited");
                        // visitorDao.editVisitor(visitor);
                        // visitorDao.deleteVisitor(visitor);
+                        //visitorDao.deleteVisitorById(16);
 
                         break;
                     }

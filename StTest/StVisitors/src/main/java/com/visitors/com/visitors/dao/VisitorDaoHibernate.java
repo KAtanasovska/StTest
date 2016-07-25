@@ -80,4 +80,12 @@ public class VisitorDaoHibernate implements VisitorDao {
         return results;
 
     }
+
+    @Override
+    public void deleteVisitorById(int id) {
+        Visitor visitor = new Visitor();
+        visitor.setId(id);
+        deleteVisitor(visitor);
+
+    }
 }
