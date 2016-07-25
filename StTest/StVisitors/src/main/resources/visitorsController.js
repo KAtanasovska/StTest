@@ -3,7 +3,8 @@
  */
 angular
     .module('MyApp')
-    .controller("visitorsController", ["serviceVisitors", function($scope, serviceVisitors){
+    .constant('initUrl', 'http://localhost:8080/Visitors')
+    .controller("visitorsController", ['$scope', 'serviceVisitors', function($scope, serviceVisitors){
 
         $scope.open = function() {
             $scope.showModal = true;
@@ -32,12 +33,7 @@ angular
                 $scope.showModal1 = false;
                 deleteVisitor=null;
                 $scope.downloadVisitors();
-            }.catch(function(error){
-                debugger;
-                $scope.showModal1 = false;
-                deleteVisitor=null;
-
-            }));
+            });
 
 
         };
@@ -46,17 +42,16 @@ angular
             $scope.showModal1 = false;
 
         };
-
+        debugger;
         $scope.downloadVisitors = function(){
+
             serviceVisitors.getVisitors().then(function(resp){
                 debugger;
                $scope.visitors=resp;
-            }.catch(function(error){
-                debugger;
+            });
 
-            }));
 
-            $scope.downloadVisitors();
         }
+        $scope.downloadVisitors();
 
     }]);

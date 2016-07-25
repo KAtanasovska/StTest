@@ -13,6 +13,7 @@
 <body ng-app="MyApp" ng-controller="visitorsController" class="ng-scope">
 <img src="images/image001.gif"/>
 <img src="images/image002.png"/>
+<form form name="myform" novalidate>
 <button class="btn" ng-click="open()" >Нов посетител</button>
 <table class ="table" border = "1">
     <tr>
@@ -24,9 +25,9 @@
         <th>Време заминување</th>
         <th>Промена на податоци</th>
     </tr>
-    <tr ng-repeat="visitor in visitors">
+    <tr ng-repeat="visitor in visitors" >
     <td>
-        <lable>{{visitor.firstName}}</lable>
+        {{visitor.firstName}}
     </td>
     <td>
         <lable>{{visitor.lastName}}</lable>
@@ -48,7 +49,7 @@
 
     </tr>
 </table>
-
+</form>
 <div modal="showModal" ng-show="showModal" close="cancel()">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -138,7 +139,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap.min.js"></script>
 <script src="app.js"></script>
-<script src="visitorsController.js"></script>
 <script src="serviceVisitors.js"></script>
+<script src="visitorsController.js"></script>
+
 
 </html>

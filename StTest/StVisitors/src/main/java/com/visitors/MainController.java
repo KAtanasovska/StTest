@@ -3,10 +3,7 @@ package com.visitors;
 import com.visitors.com.visitors.dao.VisitorDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -21,7 +18,7 @@ public class MainController {
     @Autowired
     VisitorDao visitorDao;
 
-
+    @CrossOrigin(origins = "http://localhost:63342")
     @RequestMapping(method = RequestMethod.GET)
     public List<Visitor> getVisitors() {
         return visitorDao.getVisitors();

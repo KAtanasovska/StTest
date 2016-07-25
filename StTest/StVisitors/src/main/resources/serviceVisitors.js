@@ -6,13 +6,14 @@ angular.module('MyApp')
 .service('serviceVisitors',function($http) {
    return {
        getVisitors: function(){
-           return $http.get("celoto url od backend")
+
+           return $http.get('http://localhost:8080/Visitors')
     },
        deleteVisitor: function(id){
-        return $http.post("url od  ", {"id":id})
+        return $http.post("http://localhost:8080/Visitors", {"id":id})
     },
        editVisitor: function(visitor){
-        return $http.post("url od", {"visitor": visitor})
+        return $http.post("http://localhost:8080/Visitors", {"visitor": visitor})
     }
    };
 });
