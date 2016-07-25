@@ -1,6 +1,7 @@
 /**
  * Created by Kristinata on 7/24/2016.
  */
+var flag = false;
 angular
     .module('MyApp')
     .constant('initUrl', 'http://localhost:8080/Visitors')
@@ -29,22 +30,24 @@ angular
 
         };
 
-        $scope.openEdit = function(id){
-            $scope.showModal = true;
+        $scope.openEdit = function(visitor){
 
+            $scope.showModal = true;
+            $scope.visitor.id = visitor.id;
 
         }
         //delete button
-        $scope.open1 = function(id) {
-            $scope.deleteVisitor = id;
+        $scope.open1 = function(visitor) {
+
+            $scope.theVisitor = visitor;
             $scope.showModal1 = true;
 
         };
         //delete confirmation button clicked
-        $scope.ok1 = function(id) {
-            var index = $scope.visitors.indexOf(id);
-           var index2 = $scope.visitors.splice(index, 1);
-            serviceVisitors.deleteVisitor(index2).then(function(){
+        $scope.ok1 = function() {
+            flag = true;
+
+            serviceVisitors.deleteVisitor(visitor).then(function(){
 
                 $scope.showModal1 = false;
                 //deleteVisitor=null;

@@ -35,18 +35,20 @@ public class MainController {
       }
 
 
+/*
     @CrossOrigin(origins = "http://localhost:63342")
-    @RequestMapping(value="/edit", method = RequestMethod.POST)
+    @RequestMapping(value="/Visitors/edit", method = RequestMethod.POST)
     public Visitor updateVisitors(@RequestBody Visitor visitor) throws SQLException {
         visitorDao.editVisitor(visitor);
         return visitor;
     }
-
+*/
+/*
     @CrossOrigin(origins = "http://localhost:63342")
-    @RequestMapping(value="/delete", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public int deleteVisitors(@RequestBody int id) throws SQLException {
         visitorDao.deleteVisitorById(id);
         return id;
     }
-
+*/
 }

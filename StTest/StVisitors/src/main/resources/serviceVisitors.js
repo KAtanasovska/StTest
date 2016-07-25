@@ -9,8 +9,9 @@ angular.module('MyApp')
 
            return $http.get('http://localhost:8080/Visitors')
     },
-       deleteVisitor: function(id){
-        return $http.post("http://localhost:8080/Visitors/delete", {'id' :id})
+       deleteVisitor: function(visitor){
+
+        return $http.post("http://localhost:8080/Visitors", {"visitor" :visitor})
     },
        editVisitor: function(visitor){
         return $http.post("http://localhost:8080/Visitors/edit", {"firstName": visitor.firstName, "lastName": visitor.lasrName,"idNumber": visitor.idNumber, "arriveDate": visitor.arriveDate, "leaveDate": visitor.leaveDate })

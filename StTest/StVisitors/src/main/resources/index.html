@@ -25,7 +25,7 @@
         <th>Време заминување</th>
         <th>Промена на податоци</th>
     </tr>
-    <tr ng-repeat="visitor in visitors" >
+    <tr ng-repeat="visitor in visitors" ng-click="select(visitor.id)" >
     <td>
         {{visitor.firstName}}
     </td>
@@ -43,7 +43,7 @@
     </td>
     <td>
         <button id="btnEdit" class="btn" ng-click="openEdit(visitor)">Измени</button>
-        <button id="btnDelete" ng-click="open1(visitor.id)" >Избриши</button>
+        <button id="btnDelete" ng-click="open1(visitor)" >Избриши</button>
     </td>
 
 
@@ -63,7 +63,7 @@
             <tr class="form-group">
                 <td>Име</td>
                 <td>
-                <input type="text" name="firstName" class="form-control" ng-model="visitor.firstName" required/>
+                <input type="text" name="firstName" class="form-control" ng-model="visitor.firstName" ng-init="visitor.firstName" required/>
                 </td>
             </tr>
             <tr class="form-group">
@@ -112,7 +112,7 @@
     </div>
 </div>
 
-<div modal="showModal1" ng-show="showModal1" close="cancel()">
+<div modal="showModal1" ng-show="showModal1" close="cancel()" title="theVisitor">
     <div class="modal-dialog">
         <div class="modal-content">
             <form name="confirmDelete">
@@ -124,7 +124,7 @@
                     <table >
                         <tr>
                             <td>
-                                <button class="btn btn-success" ng-click="ok1(id)">Да</button>
+                                <button class="btn btn-success" ng-click="ok1()">Да</button>
                             </td>
                             <td>
                                 <button class="btn" ng-click="cancel1()">Не</button>

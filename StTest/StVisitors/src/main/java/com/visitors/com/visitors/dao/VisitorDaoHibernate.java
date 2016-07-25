@@ -27,34 +27,32 @@ public class VisitorDaoHibernate implements VisitorDao {
 
     @Override
     public void addVisitor(Visitor visitor) throws SQLException {
-            Session session = sessionFactory.openSession();
+         Session session = sessionFactory.openSession();
             Transaction tx = null;
-            try{
+        int count = ((Long)session.createQuery("select count(*) from Visitor where id=" + visitor.getId()+ "").uniqueResult()).intValue();
+        System.out.println("rezultatot e " + count);
+        if(count==0) {
+            try {
                 tx = (Transaction) session.beginTransaction();
                 session.save(visitor);
                 tx.commit();
-            }catch(RuntimeException e){
-                if(tx != null){tx.rollback();}
-            }finally{
+            } catch (RuntimeException e) {
+                if (tx != null) {
+                    tx.rollback();
+                }
+            } finally {
                 session.close();
             }
+        }else{
+            editVisitor(visitor);
+        }
+
 
         }
 
     @Override
     public void editVisitor(Visitor visitor){
         Session session = sessionFactory.openSession();
-        /*String hql = "UPDATE Visitor set firstName = :firstName; set lastName = :lastName; set idNumber = :idNumber; set arriveDate = :arriveDate; set leaveDate = :leaveDate)"  +
-                "WHERE id = :id";
-        Query query = session.createQuery(hql);
-        query.setParameter("firstName", visitor.getFirstName());
-        query.setParameter("lastName", visitor.getLastName());
-        query.setParameter("idNumber", visitor.getIdNumber());
-        query.setParameter("arriveDate", visitor.getArriveDate());
-        query.setParameter("leaveDate", visitor.getLeaveDate());
-        query.setParameter("id", visitor.getId());
-        query.executeUpdate();
-        */
         Transaction tx = session.beginTransaction();
         session.update(visitor);
         tx.commit();
