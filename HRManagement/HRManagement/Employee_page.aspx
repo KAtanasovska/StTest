@@ -88,7 +88,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Days left from annual paid leave: <b><asp:Label runat="server" ID="lbDaysOfVacation"/></b> days</h2>
+                <h2 class="page-header">
+                    Days left from annual paid leave: <b><asp:Label runat="server" ID="lbDaysOfVacation"/></b> days</h2>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -102,32 +103,31 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form role="form">
+                                <form id="form1" runat="server">
                                     <div class="form-group">
                                         <label>Date from</label>
-                                        <input class="form-control" type="date" title="date from" >
+                                        <asp:TextBox runat="server" class="form-control" type="date" title="date from" ID="tbDateFrom" />
                                     </div>
                                     <div class="form-group">
                                         <label>Date to</label>
-                                        <input class="form-control" type="date" title="date to">
+                                        <asp:TextBox runat="server" class="form-control" type="date" title="date to" ID="tbDateTo"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Type of leave</label>
-                                        <select class="form-control" title="type of leave">
-                                            <option>Other</option>
-                                            <option>Medical Leave</option>
-                                            <option>Maternity</option>
-                                            <option>Paternity</option>
-                                            <option>Annual Paid Leave</option>
-                                        </select>
+                                        <asp:DropDownList runat="server" id="ddlstTypeOfLeave" DataSourceID="SqlDataSourceLeaveType" DataTextField="type" DataValueField="Id">
+                                            
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSourceLeaveType" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringHRManagement %>" SelectCommand="SELECT * FROM [Leave_type]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlDataSourceLeaveHistory" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringHRManagement %>" SelectCommand="SELECT [Comment], [From_date], [To_date], [Status] FROM [Leave]">
+                                        </asp:SqlDataSource>
                                     </div>
                                     <div class="form-group">
                                         <label>Comment</label>
-                                        <textarea class="form-control" rows="3" title="comment"></textarea>
+                                        <asp:TextBox TextMode="multiline" runat="server"  class="form-control" rows="3" title="comment" ID="tbComment"></asp:TextBox>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                    <button type="reset" class="btn btn-default">Reset</button>
-                            </form>
+                                    <asp:Button runat="server" type="submit" class="btn btn-success" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click"></asp:Button>
+                                    <asp:Button runat="server" type="reset" class="btn btn-default" ID="btnReset" Text="Reset"></asp:Button>
+                                </form>
                         </div>
                         <!-- /.col-lg-6 (nested) -->
                     </div>
@@ -157,5 +157,6 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>
+    <asp:Label ID="lblSuccesfulLeaveRequest" runat="server"></asp:Label>
 </body>
 </html>

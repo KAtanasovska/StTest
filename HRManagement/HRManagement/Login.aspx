@@ -23,7 +23,7 @@
 
 </head>
 <body>
-    <div class="container">
+    <div  class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 
@@ -38,19 +38,21 @@
                         <form id="login" runat="server" role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <asp:TextBox runat="server" id="inUsername"/>
+                                    <asp:TextBox runat="server" id="inUsername" Text="Username"  />
+                                    <input type="text" id="proba" runat="server" required>
                                 </div>
                                 <div class="form-group">
                                     <asp:TextBox runat="server" id="inPassword"/>
                                 </div>
                                 <div class="checkbox">
-                                    <label>
+                                    <label id="theLable" runat="server">some lable</label>
                                        <!-- <input name="remember" type="checkbox" value="Remember Me"/>Remember Me
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                <!-- <button class="btn btn-lg btn-success btn-block" id="btnLogin">Login</button> -->
-                                <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-lg btn-success btn-block" OnClick="btnLogin_Click" />
+                                </div>
+                                    <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-lg btn-success btn-block" OnClick="btnLogin_Click" />
                                     <asp:Label ID="lblInvalidUserPassword" runat="server"></asp:Label>
                             </fieldset>
                         </form>
