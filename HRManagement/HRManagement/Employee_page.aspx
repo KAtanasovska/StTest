@@ -73,7 +73,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="Login.aspx"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -106,11 +106,11 @@
                                 <form id="form1" runat="server">
                                     <div class="form-group">
                                         <label>Date from</label>
-                                        <asp:TextBox runat="server" class="form-control" type="date" title="date from" ID="tbDateFrom" />
+                                        <input runat="server" class="form-control" type="date" title="date from" ID="tbDateFrom" required="required" />
                                     </div>
                                     <div class="form-group">
                                         <label>Date to</label>
-                                        <asp:TextBox runat="server" class="form-control" type="date" title="date to" ID="tbDateTo"/>
+                                        <input runat="server" class="form-control" type="date" title="date to" ID="tbDateTo" required="required"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Type of leave</label>
@@ -127,8 +127,9 @@
                                     </div>
                                     <asp:Button runat="server" type="submit" class="btn btn-success" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click"></asp:Button>
                                     <asp:Button runat="server" type="reset" class="btn btn-default" ID="btnReset" Text="Reset"></asp:Button>
+                                    <label runat="server" id="lblAddedLeave"></label>
                                 </form>
-                        </div>
+                         </div>
                         <!-- /.col-lg-6 (nested) -->
                     </div>
                     <!-- /.row (nested) -->
@@ -137,14 +138,374 @@
             </div>
             <!-- /.panel -->
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Employee Leave Chart
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div id="morris-donut-chart">
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Requests history
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <table width="100%" class="table table-striped table-bordered table-hover"
+                                   id="dataTables-example1">
+                                <thead>
+                                <tr>
+                                    <th>Date from</th>
+                                    <th>Date to</th>
+                                    <th>Total</th>
+                                    <th>Days left</th>
+                                    <th>Type of leave</th>
+                                    <th>Comment</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        Pending
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center"><i class="text-danger">Declined</i>
+
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center"><i class="text-danger">Declined</i>
+
+                                    </td>
+                                </tr>
+
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        Pending
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center"><i class="text-danger">Declined</i>
+
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center"><i class="text-danger">Declined</i>
+
+                                    </td>
+                                </tr>
+
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        Pending
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center"><i class="text-danger">Declined</i>
+
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center"><i class="text-danger">Declined</i>
+
+                                    </td>
+                                </tr>
+
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        Pending
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-success">Accepted</i>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>12/12/2016</td>
+                                    <td>14/12/216</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td class="center">paid leave</td>
+                                    <td class="center">X</td>
+                                    <td class="center">
+                                        <i class="text-danger">Declined</i>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
     <!-- /.row -->
 </div>
 <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
+
 
 <!-- jQuery -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -155,8 +516,26 @@
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
+<!-- DataTables JavaScript -->
+<script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<script src="../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
+
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>
-    <asp:Label ID="lblSuccesfulLeaveRequest" runat="server"></asp:Label>
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example1').DataTable({
+            responsive: true
+        });
+    });
+</script>
+
+<!-- Morris Charts JavaScript -->
+<script src="../bower_components/raphael/raphael-min.js"></script>
+<script src="../bower_components/morrisjs/morris.min.js"></script>
+<script src="../js/morris-data-donut.js"></script>
 </body>
 </html>

@@ -202,11 +202,13 @@
     <Content Include="App_Data\HRManagementDatabase_log.ldf">
       <DependentUpon>HRManagementDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="Assign_leave.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Edit_database.aspx" />
+    <Content Include="Employee_list.aspx" />
     <Content Include="Employee_page.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -217,6 +219,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="index.html" />
     <Content Include="Login.aspx" />
     <Content Include="Manager_page.aspx" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
@@ -386,6 +389,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Assign_leave.aspx.cs">
+      <DependentUpon>Assign_leave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Assign_leave.aspx.designer.cs">
+      <DependentUpon>Assign_leave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -406,6 +416,13 @@
     </Compile>
     <Compile Include="Edit_database.aspx.designer.cs">
       <DependentUpon>Edit_database.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee_list.aspx.cs">
+      <DependentUpon>Employee_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee_list.aspx.designer.cs">
+      <DependentUpon>Employee_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee_page.aspx.cs">
       <DependentUpon>Employee_page.aspx</DependentUpon>
@@ -467,6 +484,9 @@
   <ItemGroup>
     <Folder Include="bower_components\" />
     <Folder Include="dist\" />
+    <Folder Include="images\" />
+    <Folder Include="js\" />
+    <Folder Include="less\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

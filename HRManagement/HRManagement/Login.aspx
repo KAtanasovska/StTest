@@ -23,7 +23,7 @@
 
 </head>
 <body>
-    <div  class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 
@@ -35,32 +35,23 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form id="login" runat="server" role="form">
-                            <fieldset>
+                        <form runat="server" role="form">
                                 <div class="form-group">
-                                    <asp:TextBox runat="server" id="inUsername" Text="Username"  />
-                                    <input type="text" id="proba" runat="server" required>
+                                    <input runat="server" id="inUsername" class="form-control" placeholder="Username" type="text" autofocus  required="required"/>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox runat="server" id="inPassword"/>
-                                </div>
-                                <div class="checkbox">
-                                    <label id="theLable" runat="server">some lable</label>
-                                       <!-- <input name="remember" type="checkbox" value="Remember Me"/>Remember Me
-                                    </label>
+                                    <input runat="server" id="inPassword" class="form-control" placeholder="Password"  type="password" required="required"/>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                               <!-- <button class="btn btn-lg btn-success btn-block" id="btnLogin">Login</button> -->
-                                </div>
-                                    <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-lg btn-success btn-block" OnClick="btnLogin_Click" />
-                                    <asp:Label ID="lblInvalidUserPassword" runat="server"></asp:Label>
-                            </fieldset>
+                            <asp:Button ID="btnLogin" runat="server" type="submit" class="btn btn-success" Text="Log In" OnClick="btnLogin_Click1"></asp:Button>
+                            <label runat="server" id="lblInvalidUserPassword"></label>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- jQuery -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>

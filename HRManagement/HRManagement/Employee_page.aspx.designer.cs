@@ -37,7 +37,7 @@ namespace HRManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDateFrom;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl tbDateFrom;
         
         /// <summary>
         /// tbDateTo control.
@@ -46,7 +46,7 @@ namespace HRManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDateTo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl tbDateTo;
         
         /// <summary>
         /// ddlstTypeOfLeave control.
@@ -103,12 +103,12 @@ namespace HRManagement {
         protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// lblSuccesfulLeaveRequest control.
+        /// lblAddedLeave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSuccesfulLeaveRequest;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAddedLeave;
     }
 }

@@ -41,18 +41,18 @@ namespace HRManagement
                 string insertLeaveQuery = "insert into Leave(Id, Comment, From_date, To_date,  Status, Leave_type_id, Employee_id) values(@id, @comment, @from, @to, @status, @type, @e_id)";
                 SqlCommand sqlCommand = new SqlCommand(insertLeaveQuery, conn);
                 sqlCommand.Parameters.AddWithValue("@id", leave_id_generated.ToString());
-                sqlCommand.Parameters.AddWithValue("@from", tbDateFrom.Text.ToString());
-                sqlCommand.Parameters.AddWithValue("@to", tbDateTo.Text.ToString());
+                sqlCommand.Parameters.AddWithValue("@from", tbDateFrom.Value.ToString());
+                sqlCommand.Parameters.AddWithValue("@to", tbDateTo.Value.ToString());
                 sqlCommand.Parameters.AddWithValue("@type", index);
                 sqlCommand.Parameters.AddWithValue("@e_id", id);
                 sqlCommand.Parameters.AddWithValue("@comment", tbComment.Text.ToString());
                 sqlCommand.Parameters.AddWithValue("@status", leaveStatus);
                 sqlCommand.ExecuteNonQuery();
-                lblSuccesfulLeaveRequest.Text = "The request was succesfully added ";
+                lblAddedLeave.InnerText = "The request was succesfully added ";
                 conn.Close();
             }
             catch(Exception ex) {
-                lblSuccesfulLeaveRequest.Text = "Something went wrong " + tbDateFrom.Text.ToString() + " " + tbDateTo.Text.ToString() + " " + ddlstTypeOfLeave.SelectedIndex + "leave id generated = " + leave_id_generated;
+                lblAddedLeave.InnerText = "Something went wrong " + tbDateFrom.Value.ToString() + " " + tbDateTo.Value.ToString() + " " + ddlstTypeOfLeave.SelectedIndex + "leave id generated = " + leave_id_generated;
             }
 
         }
